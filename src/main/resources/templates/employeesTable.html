@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/table.css">
+    <link rel="stylesheet" href="css/button21.css">
+
+</head>
+<body>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Идентификатор</th>
+        <th>ФИО сотрудника</th>
+        <th>Должность сотрудника</th>
+        <th>Кафедра</th>
+        <th>Наименование дисциплин, которые ведет сотрдуник</th>
+        <th>Сроки ведения дисплиц(ДД.ММ.ГГГГ-ДД.ММ.ГГГГ)</th>
+        <th>Контактный телефон</th>
+        <th>Электронная почта(e-mail)</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="employee : ${page.content}">
+        <td><span th:text="${employee.id}"> Идентификатор<</span></td>
+        <td><span th:text="${employee.name}"> ФИО сотрудника </span></td>
+        <td><span th:text="${employee.position}">Должность сотрудника</span></td>
+        <td><span th:text="${employee.cathedra}"> Кафедра </span></td>
+        <td><span th:text="${employee.disciplines}"> Наименование дисциплин, которые ведет сотрдуник</span></td>
+        <td><span th:text="${employee.date}"> Сроки ведения дисплиц(ДД.ММ.ГГГГ-ДД.ММ.ГГГГ) </span></td>
+        <td><span th:text="${employee.number}"> Контактный телефон </span></td>
+        <td><span th:text="${employee.mail}"> Электронная почта(e-mail) </span></td>
+        <td><a th:href="@{employee/delete/__${employee.id}__}" class="button21">Удалить</a>
+        </td>
+
+    </tr>
+    </tbody>
+</table>
+<div class="pagination-div">
+    <div>
+        Страница:
+
+        <span th:if="${page.hasPrevious()}">
+        <a th:href="@{/employee(page=${page.number-1},size=${page.size})}">Предыдущая</a>
+    </span>
+        <th:block th:each="i: ${#numbers.sequence(0, page.totalPages - 1)}">
+            <span th:if="${page.number == i}" class="selected">[[${i}+1]]</span>
+            <span th:unless="${page.number == i}">
+             <a th:href="@{/employee(page=${i},size=${page.size})}">[[${i}+1]]</a>
+        </span>
+        </th:block>
+        <span th:if="${page.hasNext()}">
+        <a th:href="@{/employee(page=${page.number+1},size=${page.size})}">Следующая</a>
+    </span>
+    </div>
+</div>
+</br>
+
+<form name="employee" action=/employee/save method="post">
+    <input title="name" required placeholder="ФИО" type="text" name="name">
+    <input title="position" required placeholder="Должность" type="text" name="position">
+    <input title="cathedra" required placeholder="Кафедра" type="text" name="cathedra">
+    <input title="date" required placeholder="Сроки ведения дисплиц" type="text" name="date">
+    <input title="disciplines" required placeholder="Наименование дисциплин" type="text" name="disciplines">
+    <input title="number" required placeholder="Контактный телефон" type="text" name="number">
+    <input title="mail" required placeholder="Электронная почта" type="text" name="mail">
+    <input type="submit" value="Добавить">
+</form>
+</br>
+<a href="/employee/send" class="button21"> Отправить</a>
+</body>
+</html>
