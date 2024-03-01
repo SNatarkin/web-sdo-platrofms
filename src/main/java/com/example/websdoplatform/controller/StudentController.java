@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class StudentController {
 
     private final StudentService studentService;
-    private final MailService mailService;
 
     @GetMapping("/student")
     public String getAllStudent(@PageableDefault(size = 10) Pageable pageable, Model model) {

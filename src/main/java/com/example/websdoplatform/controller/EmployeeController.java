@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class EmployeeController {
 
     private final EmployeeService employeeService;
-    private final MailService mailService;
 
 
     @GetMapping("/employee")

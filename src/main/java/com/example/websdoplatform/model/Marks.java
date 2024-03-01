@@ -20,7 +20,7 @@ public class Marks {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "participant_studying_id")
-    private Long studentId;
+    private Long participantStudyingId;
     @Column(name = "subject_id")
     private Long subjectId;
     private String mark;
