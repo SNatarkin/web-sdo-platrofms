@@ -1,9 +1,7 @@
 package com.example.websdoplatform.controller;
 
 
-import com.example.websdoplatform.dto.Stat;
 import com.example.websdoplatform.dto.StudentDto.StudentSaveRequestDto;
-import com.example.websdoplatform.service.MailService;
 import com.example.websdoplatform.service.StudentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
@@ -14,8 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
-import java.io.IOException;
 
 @Controller
 @RequiredArgsConstructor
