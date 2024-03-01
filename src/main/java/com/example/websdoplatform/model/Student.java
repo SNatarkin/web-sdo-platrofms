@@ -19,7 +19,7 @@ public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-    private String name;
+    private String fullName;
     private String number;
     private String birthDate;
     private String faculty;

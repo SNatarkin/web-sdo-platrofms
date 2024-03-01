@@ -47,7 +47,7 @@ public class StudentServiceImpl implements StudentService {
         student.setFaculty(studentSaveRequestDto.getFaculty());
         student.setMail(studentSaveRequestDto.getMail());
         student.setNumber(studentSaveRequestDto.getNumber());
-        student.setName(studentSaveRequestDto.getName());
+        student.setFullName(studentSaveRequestDto.getName());
         return studentRepository.save(student);
     }
 
@@ -62,7 +62,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public void getCsvFIle(OutputStream outputStream) throws IOException {
+    public void getCsvFIle(OutputStream outputStream) {
         try {
             BufferedWriter buff = new BufferedWriter(new OutputStreamWriter(outputStream, "Windows-1251"));
             List<Student> listStudent = studentRepository.findAll();
