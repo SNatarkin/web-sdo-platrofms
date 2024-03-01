@@ -2,6 +2,8 @@ package com.example.websdoplatform.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -10,7 +12,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "marks")
+@Table(name = "roles_participants")
 @Getter
 @Setter
 public class RolesParticipants {
@@ -19,6 +21,7 @@ public class RolesParticipants {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "role_name")
-    private String roleName;
+    @Enumerated(EnumType.STRING)
+    private StatementType roleName;
     private String comment;
 }

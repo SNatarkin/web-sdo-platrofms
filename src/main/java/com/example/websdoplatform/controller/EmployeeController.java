@@ -1,7 +1,7 @@
 package com.example.websdoplatform.controller;
 
 import com.example.websdoplatform.dto.EmployeeDto.EmployeeSaveRequestDto;
-import com.example.websdoplatform.dto.StatementType;
+import com.example.websdoplatform.dto.Stat;
 import com.example.websdoplatform.service.EmployeeService;
 import com.example.websdoplatform.service.MailService;
 import lombok.RequiredArgsConstructor;
@@ -38,12 +38,6 @@ public class EmployeeController {
     @GetMapping("/employee/delete/{id}")
     public String deleteUser(@PathVariable("id") Long id) {
         employeeService.deleteEmployeeById(id);
-        return "redirect:/employee";
-    }
-
-    @GetMapping("/employee/send")
-    public String exportToCSV() {
-        mailService.sendMailWithAttachment(StatementType.EMPLOYEE);
         return "redirect:/employee";
     }
 }

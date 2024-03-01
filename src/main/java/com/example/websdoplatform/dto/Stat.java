@@ -1,5 +1,5 @@
 package com.example.websdoplatform.dto;
 
-public enum StatementType {
+public enum Stat {
     EMPLOYEE,STUDENT;
 }

@@ -1,7 +1,7 @@
 package com.example.websdoplatform.controller;
 
 
-import com.example.websdoplatform.dto.StatementType;
+import com.example.websdoplatform.dto.Stat;
 import com.example.websdoplatform.dto.StudentDto.StudentSaveRequestDto;
 import com.example.websdoplatform.service.MailService;
 import com.example.websdoplatform.service.StudentService;
@@ -33,12 +33,6 @@ public class StudentController {
     @PostMapping("/student/save")
     public String saveStudent(@ModelAttribute("student") StudentSaveRequestDto studentSaveRequestDto) {
         studentService.saveStudent(studentSaveRequestDto);
-        return "redirect:/student";
-    }
-
-    @GetMapping("/student/send")
-    public String exportToCSV() throws IOException {
-        mailService.sendMailWithAttachment(StatementType.STUDENT);
         return "redirect:/student";
     }
 

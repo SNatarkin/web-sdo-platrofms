@@ -1,10 +1,10 @@
 package com.example.websdoplatform.service;
 
-import com.example.websdoplatform.dto.StatementType;
+import com.example.websdoplatform.dto.Stat;
 
 public interface MailService {
 
 
 
-    void sendMailWithAttachment(StatementType type);
+    void sendMailWithAttachment(Stat type);
 }
