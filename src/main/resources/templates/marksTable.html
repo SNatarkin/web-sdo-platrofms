@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/table.css">
+    <link rel="stylesheet" href="css/button21.css">
+</head>
+<body>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Идентификатор</th>
+        <th>ФИО</th>
+        <th>Снилс или Кампусный номер</th>
+        <th>Дата рождения(ДДММГГГГ)</th>
+        <th>Факультет</th>
+        <th>Электронная почта(e-mail)</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="student : ${page.content}">
+        <td><span th:text="${marks.subject}"> Идентификатор</span></td>
+        <td><span th:text="${marks.mark}"> ФИО</span></td>
+        <td><span th:text="${marks.comment}">Снилс или Кампусный номер</span></td>
+    </tr>
+    </tbody>
+</table>
+<div class="pagination-div">
+    <div>
+        Страница:
+
+        <span th:if="${page.hasPrevious()}">
+        <a th:href="@{/marks(page=${page.number-1},size=${page.size})}">Предыдущая</a>
+    </span>
+        <th:block th:each="i: ${#numbers.sequence(0, page.totalPages - 1)}">
+            <span th:if="${page.number == i}" class="selected">[[${i}+1]]</span>
+            <span th:unless="${page.number == i}">
+             <a th:href="@{/marks(page=${i},size=${page.size})}">[[${i}+1]]</a>
+        </span>
+        </th:block>
+        <span th:if="${page.hasNext()}">
+        <a th:href="@{/marks(page=${page.number+1},size=${page.size})}">Следующая</a>
+    </span>
+    </div>
+</div>
+</br>
+</body>
+</html>

@@ -15,23 +15,22 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping(value = {"/grade-book", "/grade-book"}, produces = APPLICATION_JSON_VALUE)
 public class MarksBookController {
 
     private final MarksBookGateway marksBookGateway;
 
     @GetMapping("/marks")
     public String getAllMarks(@PageableDefault(size = 10) Pageable pageable,
-                                         Model model) {
+                              Model model) {
         model.addAttribute("page", marksBookGateway.getAllMarks(pageable));
-        return "markstable";
+        return "marksTable";
     }
 
     @GetMapping("/marks/{studentName}")
     public String getMarksByStudentName(@PageableDefault(size = 10) Pageable pageable,
-                                         Model model, @PathVariable String studentName) {
+                                        Model model, @PathVariable String studentName) {
         model.addAttribute("page", marksBookGateway.getMarksByStudentName(pageable, studentName));
-        return "markstable";
+        return "marksTable";
     }
 
 

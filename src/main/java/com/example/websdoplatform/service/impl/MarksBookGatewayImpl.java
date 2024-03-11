@@ -21,11 +21,12 @@ public class MarksBookGatewayImpl implements MarksBookGateway {
 
     @Override
     public Page<Marks> getMarksByStudentName(Pageable pageable, String studentName) {
+        saveMarks();
         return marksRepository.findMarksByParticipantStudyingName(pageable, studentName);
     }
 
     @Override
-    public Marks saveMarks() {
+    public void saveMarks() {
         Marks marks = new Marks();
         Subjects subject = new Subjects();
         subject.setComment("123");
@@ -40,7 +41,7 @@ public class MarksBookGatewayImpl implements MarksBookGateway {
         marks.setSubject(subject);
         marks.setComment("123");
         marks.setParticipantStudying(participantStudying);
-        return marks;
+        marksRepository.save(marks);
     }
 
     @Override

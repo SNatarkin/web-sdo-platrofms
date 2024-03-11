@@ -8,7 +8,7 @@ public interface MarksBookGateway {
 
     Page<Marks> getMarksByStudentName(Pageable pageable, String studentName);
 
-    Marks saveMarks();
+    void saveMarks();
 
     Page<Marks> getAllMarks(Pageable pageable);
 }
