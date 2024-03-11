@@ -10,8 +10,17 @@
 <!-- Форма поиска по имени -->
 <form th:action="@{/marks}" method="get">
     <input type="text" name="searchName" placeholder="Поиск по имени">
+    <select name="ratingFilter">
+        <option value="all">Все</option>
+        <option value="positive">Положительные</option>
+        <option value="negative">Отрицательные</option>
+    </select>
+    <select name="subjectFilter">
+        <option value="math">Математика</option>
+        <option value="chemistry">Химия</option>
+    </select>
     <button type="submit">Искать</button>
-</form>
+</form>>
 
 <table class="marks">
     <thead>
@@ -48,5 +57,6 @@
     </div>
 </div>
 </br>
+<p th:text="${select}"></p>
 </body>
 </html>

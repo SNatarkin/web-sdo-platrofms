@@ -20,7 +20,9 @@ public class MarksBookController {
 
     @GetMapping("/marks")
     public String getAllMarks(@PageableDefault(size = 10) Pageable pageable,
-                              Model model, @RequestParam(required = false) String studentName) {
+                              Model model, @RequestParam(required = false) String studentName,
+                              @RequestParam(required = false) String ratingFilter,
+                              @RequestParam(required = false) String subjectFilter) {
         Page<Marks> marksPage;
         if (studentName != null) {
             marksPage = marksBookGateway.getMarksByStudentName(pageable, studentName);
@@ -29,6 +31,7 @@ public class MarksBookController {
 
 
         model.addAttribute("page", marksPage);
+        model.addAttribute("select", "SELECT * FROM SERVICE");
         return "marksTable";
     }
 
