@@ -4,25 +4,28 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="css/table.css">
-    <link rel="stylesheet" href="css/button21.css">
+    <link rel="stylesheet" href="css/marks.css">
 </head>
 <body>
-<table class="table">
+<!-- Форма поиска по имени -->
+<form th:action="@{/marks}" method="get">
+    <input type="text" name="searchName" placeholder="Поиск по имени">
+    <button type="submit">Искать</button>
+</form>
+
+<table class="marks">
     <thead>
     <tr>
-        <th>Идентификатор</th>
-        <th>ФИО</th>
-        <th>Снилс или Кампусный номер</th>
-        <th>Дата рождения(ДДММГГГГ)</th>
-        <th>Факультет</th>
-        <th>Электронная почта(e-mail)</th>
+        <th>Имя ученика</th>
+        <th>Предмет</th>
+        <th>Оценка</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="student : ${page.content}">
-        <td><span th:text="${marks.subject}"> Идентификатор</span></td>
-        <td><span th:text="${marks.mark}"> ФИО</span></td>
-        <td><span th:text="${marks.comment}">Снилс или Кампусный номер</span></td>
+        <td><span th:text="${marks.participantStudying.name}"> Имя ученика</span></td>
+        <td><span th:text="${marks.subject.subjectName}"> Предмет</span></td>
+        <td><span th:text="${marks.comment}">Оценка</span></td>
     </tr>
     </tbody>
 </table>

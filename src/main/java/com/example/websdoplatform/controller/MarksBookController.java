@@ -1,17 +1,16 @@
 package com.example.websdoplatform.controller;
 
+import com.example.websdoplatform.model.Marks;
 import com.example.websdoplatform.service.MarksBookGateway;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequiredArgsConstructor
@@ -21,14 +20,21 @@ public class MarksBookController {
 
     @GetMapping("/marks")
     public String getAllMarks(@PageableDefault(size = 10) Pageable pageable,
-                              Model model) {
-        model.addAttribute("page", marksBookGateway.getAllMarks(pageable));
+                              Model model, @RequestParam(required = false) String studentName) {
+        Page<Marks> marksPage;
+        if (studentName != null) {
+            marksPage = marksBookGateway.getMarksByStudentName(pageable, studentName);
+        }
+        marksPage = marksBookGateway.getAllMarks(pageable);
+
+
+        model.addAttribute("page", marksPage);
         return "marksTable";
     }
 
     @GetMapping("/marks/{studentName}")
     public String getMarksByStudentName(@PageableDefault(size = 10) Pageable pageable,
-                                        Model model, @PathVariable String studentName) {
+                                        Model model, @RequestParam(required = false) String studentName) {
         model.addAttribute("page", marksBookGateway.getMarksByStudentName(pageable, studentName));
         return "marksTable";
     }
