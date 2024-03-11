@@ -15,8 +15,10 @@ public class MarksBookGatewayImpl implements MarksBookGateway {
 
     private final MarksRepository marksRepository;
 
+    private final String SHABLON = "SELECT % asdasd sadasda";
+
     @Override
     public Page<Marks> getGradesByStudentName(Pageable pageable, String studentName) {
-        return marksRepository.findByStudentName(pageable, studentName);
+        return marksRepository.findParticipantStudyingId(pageable, studentName);
     }
 }

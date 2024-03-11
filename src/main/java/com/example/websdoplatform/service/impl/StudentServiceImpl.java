@@ -47,7 +47,6 @@ public class StudentServiceImpl implements StudentService {
         student.setFaculty(studentSaveRequestDto.getFaculty());
         student.setMail(studentSaveRequestDto.getMail());
         student.setNumber(studentSaveRequestDto.getNumber());
-        student.setFullName(studentSaveRequestDto.getName());
         return studentRepository.save(student);
     }
 
