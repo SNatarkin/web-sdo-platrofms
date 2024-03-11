@@ -24,10 +24,10 @@ public class Marks {
     private Long id;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "participant_studying_id")
-    private ParticipantsStudying participantStudyingId;
+    private ParticipantsStudying participantStudying;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "subject_id")
-    private Subjects subjectId;
+    private Subjects subject;
     private String mark;
     private Date date;
     private String comment;

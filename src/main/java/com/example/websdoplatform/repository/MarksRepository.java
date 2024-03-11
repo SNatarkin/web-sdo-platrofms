@@ -9,5 +9,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MarksRepository extends PagingAndSortingRepository<Marks, Long> {
 
-    Page<Marks> findParticipantStudyingId(Pageable pageable, String participantStudyingId);
+    Page<Marks> findMarksByParticipantStudyingName(Pageable pageable, String participantStudyingId);
 }

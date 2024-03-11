@@ -1,5 +1,6 @@
 package com.example.websdoplatform.controller;
 
+import com.example.websdoplatform.dto.StudentDto.StudentSaveRequestDto;
 import com.example.websdoplatform.service.MarksBookGateway;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
@@ -7,7 +8,9 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
@@ -24,5 +27,12 @@ public class MarksBookController {
                                          Model model, @PathVariable String studentName) {
         model.addAttribute("page", marksBookGateway.getGradesByStudentName(pageable, studentName));
         return "employeesTable";
+    }
+
+
+    @PostMapping("/student/save")
+    public String saveStudent() {
+        marksBookGateway.saveMarks();
+        return "redirect:/student";
     }
 }

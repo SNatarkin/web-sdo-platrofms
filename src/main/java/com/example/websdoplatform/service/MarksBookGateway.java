@@ -7,4 +7,6 @@ import org.springframework.data.domain.Pageable;
 public interface MarksBookGateway {
 
     Page<Marks> getGradesByStudentName(Pageable pageable, String studentName);
+
+    Marks saveMarks();
 }
