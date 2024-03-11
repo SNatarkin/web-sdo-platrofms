@@ -20,7 +20,7 @@ public class MarksBookGatewayImpl implements MarksBookGateway {
     private final String SHABLON = "SELECT % asdasd sadasda";
 
     @Override
-    public Page<Marks> getGradesByStudentName(Pageable pageable, String studentName) {
+    public Page<Marks> getMarksByStudentName(Pageable pageable, String studentName) {
         return marksRepository.findMarksByParticipantStudyingName(pageable, studentName);
     }
 
@@ -41,5 +41,10 @@ public class MarksBookGatewayImpl implements MarksBookGateway {
         marks.setComment("123");
         marks.setParticipantStudying(participantStudying);
         return marks;
+    }
+
+    @Override
+    public Page<Marks> getAllMarks(Pageable pageable) {
+        return marksRepository.findAll(pageable);
     }
 }
